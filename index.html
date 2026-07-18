@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIGG BOUNCE — India's Largest Bouncing Theme Park | Coming Soon</title>
+  <meta name="description" content="Bangalore, get ready. BIGG BOUNCE — India's Largest Bouncing Theme Park. Coming soon." />
+  <meta property="og:title" content="BIGG BOUNCE — Coming Soon" />
+  <meta property="og:description" content="India's Largest Bouncing Theme Park. The biggest candy-themed inflatable festival is coming to Bangalore." />
+  <meta property="og:image" content="/logo.jpeg" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="/logo.jpeg" type="image/jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="orbits" aria-hidden="true">
+    <span class="dot d1"></span>
+    <span class="dot d2"></span>
+    <span class="dot d3"></span>
+    <span class="dot d4"></span>
+    <span class="dot d5"></span>
+    <span class="dot d6"></span>
+  </div>
+
+  <main class="stage">
+    <header class="brand">
+      <img src="/logo.jpeg" alt="BIGG BOUNCE — India's Largest Bouncing Theme Park" class="logo" width="280" height="280" />
+      <p class="eyebrow">Bangalore · Coming Soon</p>
+      <h1 class="wordmark" aria-label="BIGG BOUNCE">
+        <span class="row big">
+          <i class="c-red">B</i><i class="c-gold">i</i><i class="c-blue">g</i><i class="c-lime">g</i>
+        </span>
+        <span class="row bounce">
+          <i class="c-purple">B</i><i class="c-pink">o</i><i class="c-blue">u</i><i class="c-gold">n</i><i class="c-red">c</i><i class="c-orange">e</i>
+        </span>
+      </h1>
+      <p class="tagline">India's Largest <em>Bouncing</em> Theme Park</p>
+    </header>
+
+    <section class="trailer" aria-label="Official trailer">
+      <div class="frame">
+        <video
+          id="trailer"
+          class="video"
+          src="/trailer.mp4"
+          playsinline
+          muted
+          loop
+          preload="metadata"
+          poster="/logo.jpeg"
+        ></video>
+        <button type="button" class="play" id="playBtn" aria-label="Play trailer with sound">
+          <span class="play-icon" aria-hidden="true"></span>
+          <span class="play-label">Watch the Trailer</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="cta">
+      <p class="promise">One full month of unforgettable family fun is almost here.</p>
+      <a class="pill" href="mailto:hello@biggbounce.in?subject=Notify%20me%20when%20BIGG%20BOUNCE%20opens">
+        Notify Me
+      </a>
+    </section>
+
+    <footer class="foot">
+      <p>© 2026 BIGG BOUNCE · India's Largest Bouncing Theme Park</p>
+    </footer>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
