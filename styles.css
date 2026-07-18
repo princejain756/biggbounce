@@ -10,7 +10,8 @@
   --white: #ffffff;
   --ink: #1a1740;
   --cream: #fff7ea;
-  --shadow: 0 18px 40px rgba(26, 23, 64, 0.22);
+  --navy: #1e2a5a;
+  --shadow: 0 18px 40px rgba(26, 23, 64, 0.25);
   --radius: 28px;
 }
 
@@ -35,6 +36,33 @@ body {
   line-height: 1.35;
 }
 
+/* Castle photo wash behind content — solid orange wash, no ugly gradients */
+.page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bg-photo {
+  position: absolute;
+  inset: -4%;
+  width: 108%;
+  height: 108%;
+  object-fit: cover;
+  opacity: 0.22;
+  filter: saturate(1.35) contrast(1.05);
+}
+
+.bg-wash {
+  position: absolute;
+  inset: 0;
+  background: var(--orange);
+  opacity: 0.82;
+  mix-blend-mode: multiply;
+}
+
 .orbits {
   position: fixed;
   inset: 0;
@@ -46,20 +74,55 @@ body {
 .dot {
   position: absolute;
   border-radius: 50%;
-  opacity: 0.28;
-  animation: floaty 8s ease-in-out infinite;
+  opacity: 0.42;
+  animation: floaty 7.5s ease-in-out infinite;
+  border: 3px solid rgba(255, 255, 255, 0.55);
 }
 
-.d1 { width: 90px; height: 90px; background: var(--gold); top: 8%; left: 6%; }
-.d2 { width: 54px; height: 54px; background: var(--blue); top: 18%; right: 8%; animation-delay: -1.5s; }
-.d3 { width: 72px; height: 72px; background: var(--pink); bottom: 16%; left: 10%; animation-delay: -3s; }
-.d4 { width: 44px; height: 44px; background: var(--lime); bottom: 24%; right: 12%; animation-delay: -2s; }
-.d5 { width: 36px; height: 36px; background: var(--purple); top: 42%; left: 4%; animation-delay: -4s; }
-.d6 { width: 60px; height: 60px; background: var(--red); top: 55%; right: 5%; animation-delay: -5s; }
+.d1 { width: 96px; height: 96px; background: var(--gold); top: 6%; left: 4%; }
+.d2 { width: 58px; height: 58px; background: var(--blue); top: 14%; right: 6%; animation-delay: -1.2s; }
+.d3 { width: 78px; height: 78px; background: var(--pink); bottom: 14%; left: 8%; animation-delay: -2.8s; }
+.d4 { width: 48px; height: 48px; background: var(--lime); bottom: 22%; right: 10%; animation-delay: -1.8s; }
+.d5 { width: 40px; height: 40px; background: var(--purple); top: 40%; left: 3%; animation-delay: -3.6s; }
+.d6 { width: 64px; height: 64px; background: var(--red); top: 52%; right: 4%; animation-delay: -4.4s; }
+.d7 { width: 34px; height: 34px; background: var(--gold); top: 72%; left: 42%; animation-delay: -5s; }
+.d8 { width: 52px; height: 52px; background: var(--blue); top: 8%; left: 48%; animation-delay: -2.2s; }
 
 @keyframes floaty {
   0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-18px) scale(1.06); }
+  50% { transform: translateY(-16px) scale(1.08); }
+}
+
+/* Powered By — corner badge */
+.powered {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 20;
+  display: grid;
+  gap: 0.25rem;
+  justify-items: center;
+  padding: 0.55rem 0.75rem 0.65rem;
+  background: var(--white);
+  border: 4px solid var(--navy);
+  border-radius: 18px;
+  box-shadow: 0 8px 0 rgba(26, 23, 64, 0.18);
+  animation: rise 0.7s ease both;
+}
+
+.powered-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+.powered-logo {
+  display: block;
+  width: 96px;
+  height: auto;
+  object-fit: contain;
 }
 
 .stage {
@@ -67,47 +130,60 @@ body {
   z-index: 1;
   width: min(1120px, calc(100% - 2rem));
   margin: 0 auto;
-  padding: 2rem 0 3rem;
+  padding: 1.5rem 0 2.5rem;
   display: grid;
-  gap: 1.75rem;
+  gap: 1.35rem;
   justify-items: center;
 }
 
 .brand {
   text-align: center;
   display: grid;
-  gap: 0.55rem;
+  gap: 0.45rem;
   justify-items: center;
   animation: rise 0.8s ease both;
+  width: 100%;
 }
 
-.logo {
-  width: min(220px, 48vw);
-  height: auto;
+/* Logo sits on castle art — the circular lockup already includes castle + tagline */
+.logo-lockup {
+  position: relative;
+  width: min(340px, 72vw);
+  aspect-ratio: 1;
   border-radius: 50%;
-  border: 6px solid var(--white);
-  box-shadow: var(--shadow);
-  background: var(--orange);
+  padding: 10px;
+  background: var(--white);
+  box-shadow: var(--shadow), 0 0 0 6px var(--blue), 0 0 0 12px var(--red), 0 0 0 18px var(--gold);
   animation: bounceIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
+.logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  background: var(--orange);
+}
+
 .eyebrow {
-  margin-top: 0.4rem;
+  margin-top: 0.65rem;
   font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--cream);
-  text-shadow: 0 1px 0 rgba(26, 23, 64, 0.15);
+  text-shadow: 0 2px 0 rgba(26, 23, 64, 0.2);
 }
 
 .wordmark {
   font-family: "Baloo 2", "Fredoka", sans-serif;
   font-weight: 800;
-  line-height: 0.9;
-  font-size: clamp(3.2rem, 13vw, 6.8rem);
+  line-height: 0.88;
+  font-size: clamp(2.6rem, 11vw, 5.8rem);
   display: grid;
-  gap: 0;
+  gap: 0.05em;
+  justify-items: center;
 }
 
 .wordmark .row {
@@ -117,13 +193,43 @@ body {
 
 .wordmark i {
   font-style: normal;
-  -webkit-text-stroke: 4px var(--white);
+  -webkit-text-stroke: 5px var(--white);
   paint-order: stroke fill;
-  filter: drop-shadow(0 5px 0 rgba(26, 23, 64, 0.16));
+  filter: drop-shadow(0 6px 0 rgba(26, 23, 64, 0.18));
 }
 
+/* Rule 1: BIGG is significantly more prominent */
 .wordmark .big {
-  font-size: 1.18em;
+  font-size: 1.55em;
+  letter-spacing: 0.02em;
+}
+
+.wordmark .bounce {
+  font-size: 0.72em;
+  letter-spacing: 0.06em;
+  opacity: 0.98;
+}
+
+/* Rule 4: tagline always part of the logo lockup */
+.logo-tagline {
+  margin-top: 0.45rem;
+  font-family: "Fredoka", sans-serif;
+  font-size: clamp(0.95rem, 2.8vw, 1.35rem);
+  font-weight: 700;
+  color: var(--cream);
+  -webkit-text-stroke: 0;
+  filter: none;
+  letter-spacing: 0.02em;
+  max-width: 28ch;
+  padding: 0.35rem 0.9rem;
+  background: var(--navy);
+  border: 3px solid var(--white);
+  border-radius: 999px;
+  box-shadow: 0 5px 0 rgba(26, 23, 64, 0.2);
+}
+
+.logo-tagline::first-line {
+  /* keep as single phrase */
 }
 
 .c-red { color: var(--red); }
@@ -134,17 +240,73 @@ body {
 .c-pink { color: var(--pink); }
 .c-orange { color: var(--orange-deep); }
 
-.tagline {
-  font-size: clamp(1rem, 2.6vw, 1.35rem);
-  font-weight: 600;
-  color: var(--cream);
-  max-width: 30ch;
+/* Rule 5: tickets CTA is loud and unmissable */
+.tickets {
+  width: 100%;
+  display: grid;
+  gap: 0.55rem;
+  justify-items: center;
+  text-align: center;
+  animation: rise 0.85s ease 0.1s both;
 }
 
-.tagline em {
-  font-style: normal;
-  color: var(--pink);
-  -webkit-text-stroke: 0;
+.tickets-kicker {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--gold);
+  border: 3px solid var(--white);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+}
+
+.buy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  width: min(100%, 640px);
+  min-height: 72px;
+  padding: 1rem 1.5rem;
+  border-radius: 22px;
+  border: 5px solid var(--white);
+  background: var(--pink);
+  color: var(--white);
+  text-decoration: none;
+  font-size: clamp(1.15rem, 3.5vw, 1.65rem);
+  font-weight: 700;
+  box-shadow: 0 10px 0 rgba(26, 23, 64, 0.22);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+}
+
+.buy strong {
+  font-size: 1.08em;
+  letter-spacing: 0.01em;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.buy:hover,
+.buy:focus-visible {
+  background: var(--red);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 14px 0 rgba(26, 23, 64, 0.22);
+  outline: none;
+}
+
+.tickets-url {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--navy);
+  background: var(--lime);
+  border: 3px solid var(--white);
+  padding: 0.25rem 0.85rem;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
 }
 
 .trailer {
@@ -158,7 +320,7 @@ body {
   border-radius: var(--radius);
   overflow: hidden;
   border: 6px solid var(--white);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow), 0 0 0 5px var(--blue);
   background: var(--ink);
   aspect-ratio: 16 / 9;
 }
@@ -182,7 +344,7 @@ body {
   padding: 0.95rem 1.4rem 0.95rem 1.1rem;
   border: 4px solid var(--white);
   border-radius: 999px;
-  background: var(--pink);
+  background: var(--blue);
   color: var(--white);
   font-family: inherit;
   font-size: clamp(1rem, 2.5vw, 1.2rem);
@@ -196,7 +358,7 @@ body {
 .play:focus-visible {
   transform: translateY(-3px) scale(1.03);
   box-shadow: 0 14px 0 rgba(26, 23, 64, 0.22);
-  background: var(--red);
+  background: var(--purple);
   outline: none;
 }
 
@@ -218,16 +380,17 @@ body {
 .cta {
   text-align: center;
   display: grid;
-  gap: 1rem;
+  gap: 0.9rem;
   justify-items: center;
-  animation: rise 1s ease 0.3s both;
+  animation: rise 1s ease 0.25s both;
 }
 
 .promise {
   font-size: clamp(1.05rem, 2.8vw, 1.35rem);
   font-weight: 600;
   color: var(--cream);
-  max-width: 34ch;
+  max-width: 36ch;
+  text-shadow: 0 2px 0 rgba(26, 23, 64, 0.18);
 }
 
 .pill {
@@ -235,33 +398,59 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 56px;
-  padding: 0.85rem 1.8rem;
+  padding: 0.85rem 1.6rem;
   border-radius: 999px;
   border: 4px solid var(--white);
-  background: var(--blue);
-  color: var(--white);
+  background: var(--gold);
+  color: var(--ink);
   text-decoration: none;
-  font-weight: 700;
-  font-size: 1.1rem;
+  font-weight: 800;
+  font-size: 1.05rem;
   box-shadow: 0 8px 0 rgba(26, 23, 64, 0.2);
-  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .pill:hover,
 .pill:focus-visible {
   background: var(--lime);
-  color: var(--ink);
   transform: translateY(-3px);
   box-shadow: 0 12px 0 rgba(26, 23, 64, 0.18);
   outline: none;
 }
 
+/* Rule 6: footnote contact */
 .foot {
-  margin-top: 0.5rem;
+  margin-top: 0.35rem;
+  width: 100%;
   text-align: center;
-  color: rgba(255, 247, 234, 0.85);
-  font-size: 0.9rem;
+  display: grid;
+  gap: 0.45rem;
+  padding: 1.1rem 1rem;
+  background: var(--navy);
+  border: 4px solid var(--white);
+  border-radius: 22px;
+  color: var(--cream);
+  font-size: 0.95rem;
   font-weight: 500;
+  box-shadow: 0 8px 0 rgba(26, 23, 64, 0.15);
+}
+
+.foot-brand {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.foot-tickets a,
+.foot-contact a {
+  color: var(--gold);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.foot-tickets a:hover,
+.foot-contact a:hover {
+  color: var(--lime);
 }
 
 @keyframes rise {
@@ -275,19 +464,48 @@ body {
   100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 720px) {
+  .powered {
+    top: 0.65rem;
+    right: 0.65rem;
+    padding: 0.4rem 0.55rem 0.5rem;
+    border-width: 3px;
+  }
+
+  .powered-logo {
+    width: 72px;
+  }
+
+  .powered-label {
+    font-size: 0.58rem;
+  }
+
   .stage {
-    padding-top: 1.25rem;
-    gap: 1.35rem;
+    padding-top: 3.5rem;
+    gap: 1.15rem;
+  }
+
+  .logo-lockup {
+    box-shadow: var(--shadow), 0 0 0 4px var(--blue), 0 0 0 8px var(--red), 0 0 0 12px var(--gold);
+    padding: 7px;
   }
 
   .wordmark i {
     -webkit-text-stroke-width: 3px;
   }
 
+  .wordmark .big {
+    font-size: 1.45em;
+  }
+
   .frame {
     border-width: 4px;
     border-radius: 20px;
+  }
+
+  .buy {
+    min-height: 64px;
+    border-radius: 18px;
   }
 
   .play {
