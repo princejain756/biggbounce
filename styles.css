@@ -422,14 +422,134 @@ body {
   outline: none;
 }
 
-/* Rule 6: footnote contact */
+/* Schedule Section */
+.schedule-section {
+  width: 100%;
+  background: var(--cream);
+  border: 4px solid var(--navy);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 1.5rem;
+  text-align: center;
+  color: var(--navy);
+  animation: rise 0.9s ease both;
+}
+
+.schedule-header {
+  display: grid;
+  gap: 0.35rem;
+  justify-items: center;
+}
+
+.schedule-badge {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  background: var(--red);
+  color: var(--white);
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.schedule-title {
+  font-family: "Baloo 2", sans-serif;
+  font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--navy);
+}
+
+.schedule-sub {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--orange-deep);
+}
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.session-card {
+  background: var(--white);
+  border: 3px solid var(--navy);
+  border-radius: 18px;
+  padding: 1.25rem 1rem;
+  display: grid;
+  gap: 0.4rem;
+  box-shadow: 0 6px 0 rgba(26, 23, 64, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.session-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 0 rgba(26, 23, 64, 0.18);
+}
+
+.session-card.s1 { border-top: 6px solid var(--pink); }
+.session-card.s2 { border-top: 6px solid var(--blue); }
+.session-card.s3 { border-top: 6px solid var(--lime); }
+.session-card.s4 { border-top: 6px solid var(--purple); }
+
+.session-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--orange-deep);
+  text-transform: uppercase;
+}
+
+.session-time {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.1;
+}
+
+.session-desc {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #666;
+}
+
+.schedule-notice {
+  background: #fff8e6;
+  border: 2px dashed var(--orange);
+  border-radius: 16px;
+  padding: 1.2rem;
+  display: grid;
+  gap: 0.85rem;
+  text-align: left;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.notice-item {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.notice-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* Rule 6: footnote contact & razorpay merchant footer */
 .foot {
   margin-top: 0.35rem;
   width: 100%;
   text-align: center;
   display: grid;
-  gap: 0.45rem;
-  padding: 1.1rem 1rem;
+  gap: 0.85rem;
+  padding: 1.5rem 1.2rem;
   background: var(--navy);
   border: 4px solid var(--white);
   border-radius: 22px;
@@ -440,21 +560,99 @@ body {
 }
 
 .foot-brand {
-  font-weight: 700;
-  font-size: 1rem;
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--gold);
 }
 
-.foot-tickets a,
-.foot-contact a {
+.foot-entity {
+  font-size: 0.95rem;
+  color: var(--white);
+}
+
+.foot-address {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.35;
+}
+
+.foot-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem 1.5rem;
+  font-size: 0.9rem;
+  margin: 0.2rem 0;
+}
+
+.foot-contacts a {
   color: var(--gold);
   font-weight: 700;
   text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
-.foot-tickets a:hover,
-.foot-contact a:hover {
+.foot-policies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.policy-link {
+  color: var(--white);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.policy-link:hover {
   color: var(--lime);
+}
+
+.sep {
+  opacity: 0.4;
+}
+
+.foot-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.download-label {
+  opacity: 0.85;
+}
+
+.pdf-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.8rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.pdf-link:hover {
+  background: var(--gold);
+  color: var(--navy);
+  transform: translateY(-1px);
 }
 
 @keyframes rise {
